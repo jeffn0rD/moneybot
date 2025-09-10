@@ -1,3 +1,13 @@
+import sys
+import os
+from pathlib import Path
+
+# Add the project root to Python path for cross-platform compatibility
+project_root = Path(__file__).parent
+if str(project_root) not in sys.path:
+    sys.path.insert(0, str(project_root))
+
+
 import asyncio
 from datetime import datetime, timedelta, timezone
 from fastapi import FastAPI
