@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  orchestrator:
+    build:
+      context: ..
+      dockerfile: infra/Dockerfile.orchestrator
+    image: multiagent-orchestrator:latest
+    ports:
+      - "8000:8000"
+    environment:
+      - ALPHA_VANTAGE_KEY=${ALPHA_VANTAGE_KEY}
+      - NEWS_API_KEY=${NEWS_API_KEY}
+      - FMP_API_KEY=${FMP_API_KEY}

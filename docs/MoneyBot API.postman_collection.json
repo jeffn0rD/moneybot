@@ -1,0 +1,43 @@
+{
+	"info": {
+		"_postman_id": "moneybot-api-collection",
+		"name": "MoneyBot API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"description": "API collection for MoneyBot trading system"
+	},
+	"item": [
+		{
+			"name": "Analyze Symbol",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/analyze/:symbol?horizon_days=5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"analyze",
+						":symbol"
+					],
+					"query": [
+						{
+							"key": "horizon_days",
+							"value": "5"
+						}
+					],
+					"variable": [
+						{
+							"key": "symbol",
+							"value": "AAPL"
+						}
+					]
+				},
+				"description": "Analyze a symbol with MoneyBot"
+			},
+			"response": []
+		}
+	]
+}
