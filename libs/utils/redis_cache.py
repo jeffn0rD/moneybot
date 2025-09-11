@@ -1,5 +1,6 @@
 import json
-import aioredis
+#import aioredis
+import redis
 import asyncio
 import hashlib
 from typing import Any, Optional
@@ -13,7 +14,7 @@ class RedisCache:
     async def _conn(self):
         if self._pool is None:
             redis_url = getattr(settings, "redis_url", "redis://localhost:6379/0")
-            self._pool = await aioredis.from_url(redis_url, encoding="utf-8", decode_responses=True)
+            self._pool = await redis.from_url(redis_url, encoding="utf-8", decode_responses=True)
         return self._pool
 
     @staticmethod
