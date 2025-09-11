@@ -64,11 +64,13 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 3. Install dependencies:
 ```bash
 # Core dependencies for API and training
-pip install fastapi uvicorn pydantic==2.8.2 anyio pytest httpx pandas numpy scipy scikit-learn lightgbm
+pip install fastapi uvicorn pydantic==2.8.2 pydantic-settings==2.1.0 anyio pytest httpx pandas numpy scipy scikit-learn lightgbm
 
 # NLP dependencies for FinBERT sentiment analysis
 pip install transformers torch --extra-index-url https://download.pytorch.org/whl/cpu
 ```
+
+> **Note**: The codebase has been updated for Pydantic v2 compatibility. If you encounter import errors related to `BaseSettings`, ensure you have `pydantic-settings` installed.
 
 4. Set up environment variables:
 ```bash

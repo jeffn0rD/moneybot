@@ -1,10 +1,11 @@
-from pydantic import BaseSettings, Field
+from pydantic_settings import BaseSettings, SettingsConfigDict
+from pydantic import Field
 
 class Settings(BaseSettings):
     # Data providers
-    alpha_vantage_key: str = Field(default="", env="ALPHA_VANTAGE_KEY")
-    news_api_key: str = Field(default="", env="NEWS_API_KEY")
-    fmp_api_key: str = Field(default="", env="FMP_API_KEY")
+    alpha_vantage_key: str = Field(default="", alias="ALPHA_VANTAGE_KEY")
+    news_api_key: str = Field(default="", alias="NEWS_API_KEY")
+    fmp_api_key: str = Field(default="", alias="FMP_API_KEY")
 
     # Orchestrator
     request_timeout_s: int = 8
@@ -28,7 +29,6 @@ class Settings(BaseSettings):
     newsapi_base: str = "https://newsapi.org/v2"
     alphavantage_base: str = "https://www.alphavantage.co/query"
 
-    class Config:
-        env_file = ".env"
+    model_config = SettingsConfigDict(env_file=".env")
 
 settings = Settings()
