@@ -101,7 +101,22 @@ python libs/models/train_meta.py --symbol AAPL --start 2022-01-01 --end 2024-12-
 uvicorn apps.orchestrator.main:app --reload --host 0.0.0.0 --port 8000
 ```
 
-#### Option B: Docker (Production-like)
+#### Option B: Windows (Fixed Commands)
+```cmd
+# Navigate to moneybot directory
+cd moneybot
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Train the meta-learner (fixed for Windows)
+python train_model.py --symbol AAPL --start 2022-01-01 --end 2024-12-31 --horizon 5 --outfile models/meta_lgbm.pkl
+
+# Run backtesting (fixed for Windows)
+python run_backtest.py --symbol AAPL --start 2022-01-01 --end 2024-12-31 --horizon 5
+```
+
+#### Option C: Docker (Production-like)
 ```bash
 # Build and start all services
 docker-compose up --build
@@ -109,7 +124,7 @@ docker-compose up --build
 # The orchestrator will be available at http://localhost:8000
 ```
 
-#### Option C: Using Makefile (Recommended for Development)
+#### Option D: Using Makefile (Recommended for Development)
 ```bash
 # Start services with single command (Redis + orchestrator)
 make up
